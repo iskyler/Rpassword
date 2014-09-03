@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".PasswordListActivity"
+            android:name=".ItemListActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,12 +17,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PasswordDetailActivity"
-            android:label="@string/title_password_detail"
-            android:parentActivityName=".PasswordListActivity" >
+            android:name=".ItemDetailActivity"
+            android:label="@string/title_item_detail"
+            android:parentActivityName=".ItemListActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".PasswordListActivity" />
+                android:value=".ItemListActivity" />
         </activity>
     </application>
 

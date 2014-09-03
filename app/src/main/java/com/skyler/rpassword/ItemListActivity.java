@@ -11,20 +11,20 @@ import android.app.Activity;
  * An activity representing a list of Items. This activity
  * has different presentations for handset and tablet-size devices. On
  * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link PasswordDetailActivity} representing
+ * lead to a {@link ItemDetailActivity} representing
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  * <p>
  * The activity makes heavy use of fragments. The list of items is a
- * {@link PasswordListFragment} and the item details
- * (if present) is a {@link PasswordDetailFragment}.
+ * {@link ItemListFragment} and the item details
+ * (if present) is a {@link ItemDetailFragment}.
  * <p>
  * This activity also implements the required
- * {@link PasswordListFragment.Callbacks} interface
+ * {@link ItemListFragment.Callbacks} interface
  * to listen for item selections.
  */
-public class PasswordListActivity extends Activity
-        implements PasswordListFragment.Callbacks {
+public class ItemListActivity extends Activity
+        implements ItemListFragment.Callbacks {
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -35,9 +35,9 @@ public class PasswordListActivity extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_password_list);
+        setContentView(R.layout.activity_item_list);
 
-        if (findViewById(R.id.password_detail_container) != null) {
+        if (findViewById(R.id.item_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-large and
             // res/values-sw600dp). If this view is present, then the
@@ -46,8 +46,8 @@ public class PasswordListActivity extends Activity
 
             // In two-pane mode, list items should be given the
             // 'activated' state when touched.
-            ((PasswordListFragment) getFragmentManager()
-                    .findFragmentById(R.id.password_list))
+            ((ItemListFragment) getFragmentManager()
+                    .findFragmentById(R.id.item_list))
                     .setActivateOnItemClick(true);
         }
 
@@ -55,7 +55,7 @@ public class PasswordListActivity extends Activity
     }
 
     /**
-     * Callback method from {@link PasswordListFragment.Callbacks}
+     * Callback method from {@link ItemListFragment.Callbacks}
      * indicating that the item with the given ID was selected.
      */
     @Override
@@ -65,18 +65,18 @@ public class PasswordListActivity extends Activity
             // adding or replacing the detail fragment using a
             // fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(PasswordDetailFragment.ARG_ITEM_ID, id);
-            PasswordDetailFragment fragment = new PasswordDetailFragment();
+            arguments.putString(ItemDetailFragment.ARG_ITEM_ID, id);
+            ItemDetailFragment fragment = new ItemDetailFragment();
             fragment.setArguments(arguments);
             getFragmentManager().beginTransaction()
-                    .replace(R.id.password_detail_container, fragment)
+                    .replace(R.id.item_detail_container, fragment)
                     .commit();
 
         } else {
             // In single-pane mode, simply start the detail activity
             // for the selected item ID.
-            Intent detailIntent = new Intent(this, PasswordDetailActivity.class);
-            detailIntent.putExtra(PasswordDetailFragment.ARG_ITEM_ID, id);
+            Intent detailIntent = new Intent(this, ItemDetailActivity.class);
+            detailIntent.putExtra(ItemDetailFragment.ARG_ITEM_ID, id);
             startActivity(detailIntent);
         }
     }

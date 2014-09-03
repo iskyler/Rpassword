@@ -8,7 +8,7 @@
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
     android:showDividers="middle"
-    tools:context=".PasswordListActivity">
+    tools:context=".ItemListActivity">
 
     <!--
     This layout is a two-pane layout for the Items
@@ -22,15 +22,15 @@
     -->
 
     <fragment
-        android:id="@+id/password_list"
-        android:name="com.skyler.rpassword.PasswordListFragment"
+        android:id="@+id/item_list"
+        android:name="com.skyler.rpassword.ItemListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         tools:layout="@android:layout/list_content" />
 
     <FrameLayout
-        android:id="@+id/password_detail_container"
+        android:id="@+id/item_detail_container"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3" />

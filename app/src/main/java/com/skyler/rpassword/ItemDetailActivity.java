@@ -8,20 +8,20 @@ import android.view.MenuItem;
 
 
 /**
- * An activity representing a single Password detail screen. This
+ * An activity representing a single Item detail screen. This
  * activity is only used on handset devices. On tablet-size devices,
- * item details lib\dt.jar;%JAVA_HOME%\lib\toos.jar are presented side-by-side with a list of items
- * in a {@link PasswordListActivity}.
+ * item details are presented side-by-side with a list of items
+ * in a {@link ItemListActivity}.
  * <p>
  * This activity is mostly just a 'shell' activity containing nothing
- * more than a {@link PasswordDetailFragment}.
+ * more than a {@link ItemDetailFragment}.
  */
-public class PasswordDetailActivity extends Activity {
+public class ItemDetailActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_password_detail);
+        setContentView(R.layout.activity_item_detail);
 
         // Show the Up button in the action bar.
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -39,12 +39,12 @@ public class PasswordDetailActivity extends Activity {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
-            arguments.putString(PasswordDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(PasswordDetailFragment.ARG_ITEM_ID));
-            PasswordDetailFragment fragment = new PasswordDetailFragment();
+            arguments.putString(ItemDetailFragment.ARG_ITEM_ID,
+                    getIntent().getStringExtra(ItemDetailFragment.ARG_ITEM_ID));
+            ItemDetailFragment fragment = new ItemDetailFragment();
             fragment.setArguments(arguments);
             getFragmentManager().beginTransaction()
-                    .add(R.id.password_detail_container, fragment)
+                    .add(R.id.item_detail_container, fragment)
                     .commit();
         }
     }
@@ -60,7 +60,7 @@ public class PasswordDetailActivity extends Activity {
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
-            NavUtils.navigateUpTo(this, new Intent(this, PasswordListActivity.class));
+            NavUtils.navigateUpTo(this, new Intent(this, ItemListActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);
