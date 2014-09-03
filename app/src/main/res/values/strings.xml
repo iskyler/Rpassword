@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Rpassword</string>
+    <string name="title_password_detail">Password Detail</string>
+
+</resources>
