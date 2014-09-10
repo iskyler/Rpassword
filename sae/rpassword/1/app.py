@@ -22,6 +22,8 @@ app.debug = True
 
 db = SQLAlchemy(app)
 
+from models import *
+
 @app.route('/')
 def index():
     return "hello, 2333"
