@@ -2,7 +2,7 @@
 import sae.const
 
 from flask import Flask
-from flaskext.sqlalchemy import SQLAlchemy
+from flask.ext.sqlalchemy import SQLAlchemy
 
 """
 database const:

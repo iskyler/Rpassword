@@ -1,2 +1,8 @@
-flask >= 0.10
-flask-sqlalchemy >= 1.0
+Flask==0.10.1
+Flask-Cache==0.13.1
+Flask-SQLAlchemy==2.0
+Jinja2==2.7.3
+MarkupSafe==0.23
+SQLAlchemy==0.9.7
+Werkzeug==0.9.6
+itsdangerous==0.24
