@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import sae.const
 
-from flask import Flask
+from flask import Flask, request, Response
 from flask.ext.sqlalchemy import SQLAlchemy
 
 """
@@ -30,7 +30,29 @@ def index():
 
 @app.route('/register/')
 def register():
-    pass
+    if 'POST' == request.method:
+        user_form = request.get_json()
+        try:
+            username = user_form.username
+            password = user_form.password
+            email = user_form.email
+        except:
+            return '', 403
+
+        user = db.session.query(User).filter_by(usermame=username)
+        if user is not None:
+            return '', 403
+
+        user = db.session.query(User).filter)_by(email=email)
+        if user is not None:
+            return '', 403
+
+        user = User(username, password, email)
+        db.session.add(user)
+        db.session.commit()
+        return '', 200
+
+    return '', 404
 
 @app.route('/login/')
 def login():
