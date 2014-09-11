@@ -13,6 +13,7 @@
             android:windowSoftInputMode="adjustResize|stateVisible" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -24,7 +25,6 @@
             android:name=".ui.MainActivity"
             android:label="@string/title_activity_main" >
         </activity>
-
         <activity
             android:name=".ui.PasswordCardActivity"
             android:label="@string/title_activity_password_card"
@@ -32,6 +32,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.skyler.rpassword.ui.MainActivity" />
+        </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:parentActivityName=".ui.LoginActivity"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.skyler.rpassword.ui.LoginActivity" />
         </activity>
     </application>
 
