@@ -16,7 +16,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
-import .R;
+import com.skyler.rpassword.R;
 
 import java.util.List;
 
@@ -236,7 +236,7 @@ public class SettingsActivity extends PreferenceActivity {
 
     /**
      * This fragment shows data and sync preferences only. It is used when the
-     * activity is showing a two-pane settings UI.
+     * activity is showing a tw-pane settings UI.
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static class DataSyncPreferenceFragment extends PreferenceFragment {
