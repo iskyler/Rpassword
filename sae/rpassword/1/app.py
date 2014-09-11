@@ -1,21 +1,8 @@
 # -*- coding: utf-8 -*-
-import sae.const
-
 from flask import Flask, request, Response
 from flask.ext.sqlalchemy import SQLAlchemy
 
-"""
-database const:
-    sae.const.MYSQL_DB
-    sae.const.MYSQL_USER
-    sae.const.MYSQL_PASS
-    sae.const.MYSQL_HOST
-    sae.const.MYSQL_PORT
-"""
-URI = "mysql://" + sae.const.MYSQL_USER + ":" + sae.const.MYSQL_PASS \
-        + "@" + sae.const.MYSQL_HOST + ":" + sae.const.MYSQL_PORT \
-        + '/' + sae.const.MYSQL_DB
-
+from config import *
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = URI
 app.debug = True
@@ -28,54 +15,73 @@ from models import *
 def index():
     return "hello, 2333"
 
-@app.route('/register/')
+@app.route('/register', methods=['POST'])
 def register():
-    if 'POST' == request.method:
-        user_form = request.get_json()
-        try:
-            username = user_form.username
-            password = user_form.password
-            email = user_form.email
-        except:
-            return '', 403
+    user_form = request.get_json()
+    try:
+        username = user_form['username']
+        password = user_form['password']
+        email = user_form['email']
+        admin = user_form['admin']
+    except:
+        return DATA_ERR, 403
 
-        user = db.session.query(User).filter_by(usermame=username)
-        if user is not None:
-            return '', 403
+    user = User.query.filter_by(username=username).first()
+    if user is not None:
+        return USER_EXIST, 403
 
-        user = db.session.query(User).filter)_by(email=email)
-        if user is not None:
-            return '', 403
+    user = User.query.filter_by(email=email).first()
+    if user is not None:
+        return USER_EXIST, 403
 
-        user = User(username, password, email)
-        db.session.add(user)
-        db.session.commit()
-        return '', 200
+    user = User(username, password, email)
+    user.admin = UserAuth(admin)
+    db.session.add(user)
+    db.session.commit()
+    return '', 200
 
-    return '', 404
-
-@app.route('/login/')
+@app.route('/login', methods=['POST'])
 def login():
-    pass
+    user_form = request.get_json()
+    try:
+        username = user_form['username']
+        password = user_form['password']
+    except:
+        return DATA_ERR, 403
 
-@app.route('/logout/')
+    user = User.query.filter_by(username=username).fisrt()
+    if user is None:
+        return USER_NOT_EXIST, 403
+
+    if user.is_login is True:
+        return HAS_LOGINED, 200
+
+    user.is_login = True
+    return '', 200
+
+@app.route('/logout', methods=['POST'])
 def logout():
-    pass
+    user_form = request.get_json()
+    try:
+        username = user_form['username']
+    except:
+        return DATA_ERR, 403
 
-@app.route('/auth/')
-def auth():
-    pass
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        return USER_NOT_EXIST, 403
 
-@app.route('/ask/')
-def ask():
-    pass
+    user.is_login = False
+    return '', 200
 
-@app.route('/add/')
+@app.route('/add', methods=['POST'])
 def add():
     pass
 
-@app.route('/modify/')
-def modify():
+@app.route('/work', methods=['POST'])
+def work():
+    # query
+
     # update
 
     # delete
