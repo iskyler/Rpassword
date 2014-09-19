@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="form_add_account_name">Please input account name</string>
+    <string name="form_add_account_username">Plea input account username</string>
+    <string name="form_add_account_password">Please input account password</string>
+</resources>

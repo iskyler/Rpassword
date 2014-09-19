@@ -1,8 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.skyler.rpassword.ui.MainActivity" >
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
-        android:showAsAction="never" />
+
+    <item android:id="@+id/action_backup"
+        android:title="@string/action_backup" />
+    <item android:id="@+id/action_restore"
+        android:title="@string/action_restore" />
+    <item android:id="@+id/action_logout"
+        android:title="@string/action_logout" />
+    <item android:id="@+id/action_about"
+        android:title="@string/action_about" />
+
 </menu>

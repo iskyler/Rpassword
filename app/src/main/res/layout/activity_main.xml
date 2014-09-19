@@ -4,39 +4,33 @@
     android:layout_height="match_parent"
     tools:context="com.skyler.rpassword.ui.MainActivity">
 
+    <Button
+        android:id="@+id/main_card_add"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/button_card_add" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_card_add">
 
-        <Button
-            android:id="@+id/btn_card_add"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="@string/action_card_add"/>
-    </LinearLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <com.fortysevendeg.swipelistview.SwipeListView
-            xmlns:swipe="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/swipe_list"
-            android:listSelector="#00000000"
+        <com.fortysevendeg.swipelistview.SwipeListView xmlns:swipe="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/main_card"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            swipe:swipeFrontView="@+id/card_front"
-            swipe:swipeBackView="@+id/card_back"
+            android:listSelector="#00000000"
             swipe:swipeActionLeft="reveal"
             swipe:swipeActionRight="dismiss"
-            swipe:swipeMode="left"
-            swipe:swipeCloseAllItemsWhenMoveList="true"
-            swipe:swipeOpenOnLongPress="false"
             swipe:swipeAnimationTime="0"
+            swipe:swipeBackView="@+id/main_card_back"
+            swipe:swipeCloseAllItemsWhenMoveList="true"
+            swipe:swipeFrontView="@+id/main_card_front"
+            swipe:swipeMode="left"
             swipe:swipeOffsetLeft="0dp"
             swipe:swipeOffsetRight="0dp"
-            />
+            swipe:swipeOpenOnLongPress="false" />
+    </LinearLayout>
 
-    </FrameLayout>
 
 </RelativeLayout>

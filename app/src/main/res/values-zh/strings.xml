@@ -1,10 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="title_activity_main">rpassword</string>
+    <string name="action_settings">设置</string>
+    <string name="action_backup">备份到云端</string>
+    <string name="form_hint_input_admin">请输入主密码</string>
 
-    <string name="app_name">rpassword</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_password_card">PasswordCardActivity</string>
+    <string name="form_email">邮箱</string>
+    <string name="form_password">密码</string>
+    <string name="form_password_again">再输入密码</string>
+    <string name="button_sign_in">登录</string>
+    <string name="button_sign_up">注册</string>
+    <string name="root">主密码</string>
 
+    <string name="button_card_add">添加帐户</string>
+    <string name="button_card_edit">编辑</string>
+    <string name="button_card_query">查询</string>
+    <string name="button_card_delete">删除</string>
+    <string name="add_account">帐户名</string>
+    <string name="account_username">帐户登录名</string>
+    <string name="ok">确认</string>
+    <string name="cancel">取消</string>
+
+    <string name="match_error">两次输入密码不一致</string>
+    <string name="card_query">查询密码</string>
+    <string name="delete_warning">确认删除帐户</string>
+    <string name="fail_register">注册失败</string>
+    <string name="success_register">注册成功</string>
+    <string name="fail_login">登录失败</string>
+    <string name="success_login">登录成功</string>
+    <string name="clip">复制到剪贴板</string>
+    <string name="success_modify">修改成功</string>
+    <string name="fail_modify">修改失败</string>
+    <string name="success_delete">删除成功</string>
+    <string name="success_add">添加成功</string>
+    <string name="fail_add">添加失败</string>
+    <string name="success_root">主密码正确</string>
+    <string name="fail_root">主密码错误</string>
+    <string name="action_restore">从云端恢复</string>
+    <string name="action_about">关于Rpassword</string>
+    <string name="action_logout">退出</string>
 </resources>

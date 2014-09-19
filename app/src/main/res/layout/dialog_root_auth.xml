@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/dialog_root_auth">
+
+    <EditText
+        android:id="@+id/dialog_root"
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:inputType="textPassword"
+        android:hint="@string/form_hint_input_admin"
+        android:imeActionId="@+id/root_auth_ime"/>
+</FrameLayout>

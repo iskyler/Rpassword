@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="form_add_account_name">请输入帐户名称</string>
+    <string name="form_add_account_username">请输入帐户登录名</string>
+    <string name="form_add_account_password">请输入帐户密码</string>
+</resources>
