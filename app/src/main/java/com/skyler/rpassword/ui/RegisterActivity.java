@@ -177,7 +177,7 @@ public class RegisterActivity extends Activity {
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 6;
+        return password.length() >= 6;
     }
 
     /**
