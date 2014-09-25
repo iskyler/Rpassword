@@ -10,5 +10,9 @@
         android:layout_height="60dip"
         android:inputType="textPassword"
         android:hint="@string/form_hint_input_admin"
+        android:textColorHint="#ffffff"
+        android:gravity="center"
+        android:background="#66cc99"
+        android:textSize="30px"
         android:imeActionId="@+id/root_auth_ime"/>
 </FrameLayout>

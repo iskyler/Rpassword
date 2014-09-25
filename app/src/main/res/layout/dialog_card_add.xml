@@ -8,20 +8,29 @@
         android:id="@+id/card_add_account"
         android:hint="@string/add_account"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:inputType="text" />
+        android:layout_height="60dp"
+        android:inputType="text"
+        android:textSize="40px"
+        android:gravity="center"
+        />
     <EditText
         android:id="@+id/card_add_username"
         android:hint="@string/account_username"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:inputType="text" />
+        android:layout_height="60dp"
+        android:inputType="text"
+        android:textSize="40px"
+        android:gravity="center"
+        />
     <EditText
         android:id="@+id/card_add_password"
         android:hint="@string/form_password"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="60dp"
         android:inputType="textPassword"
-        android:imeActionId="@+id/card_add_ime" />
+        android:imeActionId="@+id/card_add_ime"
+        android:textSize="40px"
+        android:gravity="center"
+        />
 
 </LinearLayout>

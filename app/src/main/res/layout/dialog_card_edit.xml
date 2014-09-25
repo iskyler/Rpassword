@@ -8,17 +8,31 @@
     <TextView
         android:id="@+id/card_edit_account"
         android:layout_width="match_parent"
-        android:layout_height="30dip" />
+        android:layout_height="wrap_content"
+        android:textSize="40px"
+        android:background="#99cccc"
+        android:gravity="center"
+        android:textColor="#666666"
+        />
 
     <EditText
         android:id="@+id/card_edit_new_password"
         android:layout_width="match_parent"
-        android:layout_height="40dip"
-        android:hint="@string/form_password"/>
+        android:layout_height="60dp"
+        android:hint="@string/form_password"
+        android:textColorHint="#006633"
+        android:textSize="40px"
+
+
+        />
 
     <EditText
         android:id="@+id/card_edit_new_password_again"
         android:layout_width="match_parent"
-        android:layout_height="40dip"
-        android:hint="@string/form_password_again"/>
+        android:layout_height="60dp"
+        android:hint="@string/form_password_again"
+        android:textColorHint="#006633"
+        android:textSize="40px"
+        />
+
 </LinearLayout>

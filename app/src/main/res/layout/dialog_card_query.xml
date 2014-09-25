@@ -8,13 +8,31 @@
     <TextView
         android:id="@+id/card_query_account"
         android:layout_width="match_parent"
-        android:layout_height="30dip" />
+        android:layout_height="50dip"
+        android:background="#ccffcc"
+        android:gravity="center"
+        android:textColor="#666666"
+        android:textSize="40px"
+        />
     <TextView
-        android:id="@+id/card_quey_username"
+        android:id="@+id/card_query_username"
         android:layout_width="match_parent"
-        android:layout_height="30dip" />
+        android:layout_height="50dip"
+        android:background="#99cccc"
+        android:gravity="center"
+        android:textColor="#666666"
+        android:textSize="40px"
+        />
     <EditText
         android:id="@+id/card_query_password"
         android:layout_width="match_parent"
-        android:layout_height="30dip" />
+        android:layout_height="50dip"
+        android:background="#ffffcc"
+        android:gravity="center"
+        android:textColor="#666666"
+        android:textSize="40px"
+        />
+
+
+
 </LinearLayout>

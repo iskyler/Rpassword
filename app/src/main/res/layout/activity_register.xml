@@ -29,35 +29,43 @@
         <EditText
             android:id="@+id/register_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:hint="@string/form_email"
             android:inputType="textEmailAddress"
             android:maxLines="1"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textSize="35px"
+            />
 
         <EditText
             android:id="@+id/register_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:hint="@string/form_password"
             android:imeActionId="@+id/login"
             android:imeActionLabel="@string/action_sign_up"
             android:imeOptions="actionUnspecified"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textSize="35px"
+
+            />
 
         <EditText
             android:id="@+id/register_admin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:hint="@string/root"
             android:imeActionId="@+id/register"
             android:imeActionLabel="@string/action_sign_up"
             android:imeOptions="actionUnspecified"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textSize="35px"
+
+            />
 
         <Button
             android:id="@+id/register_sign_up"
@@ -66,7 +74,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/button_sign_up"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="#66cc99"
+            android:textColor="#ffffff"
+            android:textSize="40px"
+            />
 
     </LinearLayout>
 

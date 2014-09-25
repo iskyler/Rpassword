@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -55,6 +56,7 @@ public class MainActivity extends Activity {
         }
 
         card_list = (SwipeListView) findViewById(R.id.main_card);
+        card_list.setOffsetLeft(this.getResources().getDisplayMetrics().widthPixels/2);
         card_adapter = new CardAdapter(
                 MainActivity.this,
                 R.layout.card,
@@ -218,7 +220,7 @@ public class MainActivity extends Activity {
                                     card_add(account, account_username, account_password);
                                 }
                             })
-                    .setTitle(R.string.add_account)
+                    .setTitle(R.string.button_card_add)
                     .show();
         }
 
@@ -257,7 +259,7 @@ public class MainActivity extends Activity {
                     .from(Card.class)
                     .where("account_name = ?", sAccount)
                     .executeSingle();
-            TextView username = (TextView) cardQuery.findViewById(R.id.card_quey_username);
+            TextView username = (TextView) cardQuery.findViewById(R.id.card_query_username);
             final EditText password = (EditText) cardQuery.findViewById(R.id.card_query_password);
             username.setText(card.account_username);
             try {
@@ -333,14 +335,14 @@ public class MainActivity extends Activity {
             final View rootAuth = getLayoutInflater().inflate(R.layout.dialog_root_auth, null);
             new AlertDialog.Builder(MainActivity.this)
                     .setView(rootAuth)
-                    .setPositiveButton(R.string.cancel,
+                    .setNegativeButton(R.string.cancel,
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();
                                 }
                             })
-                    .setNegativeButton(R.string.ok,
+                    .setPositiveButton(R.string.ok,
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -348,7 +350,7 @@ public class MainActivity extends Activity {
                                     root_auth(root_view);
                                 }
                             })
-                    .setTitle(R.string.title_activity_root_auth)
+                    .setTitle(R.string.root)
                     .show();
         }
 
