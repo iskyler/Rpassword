@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">rpassword</string>
+    <string name="title_activity_main">rpassword</string>
+    <string name="title_activity_about">rpassword</string>
+    <string name="action_sign_in">signin</string>
+    <string name="action_sign_up">signup</string>
+    <string name="team">2333工作室</string>
+    <string name="team_member">skyler KarmenTse Tt William</string>
+</resources>

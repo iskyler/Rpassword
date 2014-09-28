@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="title_activity_main">rpassword</string>
-    <string name="action_settings">设置</string>
     <string name="action_backup">备份到云端</string>
     <string name="form_hint_input_admin">请输入主密码</string>
 
@@ -34,9 +32,22 @@
     <string name="success_delete">删除成功</string>
     <string name="success_add">添加成功</string>
     <string name="fail_add">添加失败</string>
-    <string name="success_root">主密码正确</string>
-    <string name="fail_root">主密码错误</string>
+    <string name="success_auth">主密码正确</string>
+    <string name="fail_auth">主密码错误</string>
     <string name="action_restore">从云端恢复</string>
     <string name="action_about">关于Rpassword</string>
     <string name="action_logout">退出</string>
+    <string name="success_logout">退出成功</string>
+    <string name="fail_logout">退出失败</string>
+    <string name="backup">备份</string>
+    <string name="backup_start">备份开始</string>
+    <string name="dialog_backup">确定开始备份?(将覆盖之前的备份)</string>
+    <string name="success_backup">备份成功</string>
+    <string name="fail_backup">备份失败</string>
+
+    <string name="restore">恢复</string>
+    <string name="restore_start">开始恢复</string>
+    <string name="success_restore">恢复成功</string>
+    <string name="fail_restore">恢复失败</string>
+    <string name="dialog_restore">确定开始恢复(不会覆盖本地的帐户条目)?</string>
 </resources>

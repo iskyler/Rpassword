@@ -27,12 +27,18 @@ import com.activeandroid.content.ContentProvider;
 import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
 import com.fortysevendeg.swipelistview.SwipeListView;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.skyler.rpassword.R;
 import com.skyler.rpassword.models.Card;
 import com.skyler.rpassword.models.User;
+import com.skyler.rpassword.utils.HTTPClient;
 import com.skyler.rpassword.utils.Secure;
 
+import org.apache.http.Header;
+
 import java.security.Security;
+import java.util.List;
 import java.util.Scanner;
 
 public class MainActivity extends Activity {
@@ -114,12 +120,17 @@ public class MainActivity extends Activity {
         int id = item.getItemId();
         switch (id) {
             case R.id.action_backup:
+                new CustomDialog().backup();
                 break;
             case R.id.action_restore:
+                new CustomDialog().restore();
                 break;
             case R.id.action_about:
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
                 break;
             case R.id.action_logout:
+                logout();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -354,6 +365,49 @@ public class MainActivity extends Activity {
                     .show();
         }
 
+        public void backup() {
+            final View dialog = getLayoutInflater().inflate(R.layout.dialog_backup, null);
+            new AlertDialog.Builder(MainActivity.this)
+                    .setView(dialog)
+                    .setNegativeButton(R.string.cancel,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            })
+                    .setPositiveButton(R.string.backup_start,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    backup_start();
+                                }
+                            })
+                    .setTitle(R.string.backup)
+                    .show();
+        }
+
+        public void restore() {
+            final View dialog = getLayoutInflater().inflate(R.layout.dialog_restore, null);
+            new AlertDialog.Builder(MainActivity.this)
+                    .setView(dialog)
+                    .setNegativeButton(R.string.cancel,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            })
+                    .setPositiveButton(R.string.restore_start,
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    restore_start();
+                                }
+                            })
+                    .setTitle(R.string.restore)
+                    .show();
+        }
         public void card_add(EditText account, EditText account_username,
                              EditText account_password) {
             account.setError(null);
@@ -391,6 +445,7 @@ public class MainActivity extends Activity {
                     byte[] salt = Secure.getSalt();
                     String key = Secure.createHash(root, salt);
                     String origKey = key.split(":")[2];
+                    Log.d("test", "origKey = " + origKey);
                     String content = Secure.AESEncrypt(sPassword, origKey);
                     Card card = new Card(sAccount, sUsername, content, key.split(":")[1]);
                     Log.d("test", key);
@@ -460,7 +515,6 @@ public class MainActivity extends Activity {
                             getString(R.string.fail_modify), Toast.LENGTH_SHORT)
                             .show();
                 }
-
             }
         }
 
@@ -491,5 +545,85 @@ public class MainActivity extends Activity {
                     .show();
             return false;
         }
+
+        public void backup_start() {
+            Toast.makeText(MainActivity.this,
+                    getString(R.string.backup_start), Toast.LENGTH_SHORT)
+                    .show();
+            List<Card> list = new Select()
+                    .from(Card.class)
+                    .orderBy("account_name")
+                    .execute();
+            RequestParams params = new RequestParams();
+            params.put("email", LoginActivity.getUsername_login());
+            params.put("backup", list);
+            params.setUseJsonStreamer(true);
+            AsyncHttpResponseHandler handler = new AsyncHttpResponseHandler() {
+                @Override
+                public void onSuccess(int i, Header[] headers, byte[] bytes) {
+                    Toast.makeText(MainActivity.this,
+                            getString(R.string.success_backup), Toast.LENGTH_SHORT)
+                            .show();
+                }
+
+                @Override
+                public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                    Toast.makeText(MainActivity.this,
+                            getString(R.string.fail_backup), Toast.LENGTH_SHORT)
+                            .show();
+
+                }
+            };
+            HTTPClient.post(MainActivity.this, "backup", new Header[]{}, params, handler);
+        }
+
+        public void restore_start() {
+            RequestParams params = new RequestParams();
+            params.put("email", LoginActivity.getUsername_login());
+            params.setUseJsonStreamer(true);
+            AsyncHttpResponseHandler handler = new AsyncHttpResponseHandler() {
+                @Override
+                public void onSuccess(int i, Header[] headers, byte[] bytes) {
+                    Toast.makeText(MainActivity.this,
+                            getString(R.string.success_restore), Toast.LENGTH_SHORT)
+                            .show();
+                }
+
+                @Override
+                public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                    Toast.makeText(MainActivity.this,
+                            getString(R.string.fail_restore), Toast.LENGTH_SHORT)
+                            .show();
+                }
+            };
+
+            HTTPClient.post(MainActivity.this, "restore", new Header[]{}, params, handler);
+        }
+    }
+
+    public void logout() {
+        RequestParams params = new RequestParams();
+        params.put("email", LoginActivity.getUsername_login());
+        params.setUseJsonStreamer(true);
+        AsyncHttpResponseHandler handler = new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int i, Header[] headers, byte[] bytes) {
+                Toast.makeText(MainActivity.this,
+                        getString(R.string.success_logout), Toast.LENGTH_SHORT)
+                        .show();
+
+                finish();
+            }
+
+            @Override
+            public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+
+                Toast.makeText(MainActivity.this,
+                        getString(R.string.fail_logout), Toast.LENGTH_SHORT)
+                        .show();
+
+            }
+        };
+        HTTPClient.post(MainActivity.this, "logout", new Header[]{}, params, handler);
     }
 }

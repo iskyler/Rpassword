@@ -181,6 +181,7 @@ public class Secure {
         Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);
         // 初始化为加密模式
         cipher.init(Cipher.ENCRYPT_MODE, key);
+        Log.d("test", "ok");
         // 执行加密加密
         byte[] result = cipher.doFinal(content.getBytes("UTF-8"));
 
@@ -197,7 +198,7 @@ public class Secure {
      */
     public static String AESDecrypt(String content, String origKey)
             throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException,
-            IllegalBlockSizeException, BadPaddingException {
+            IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException {
 
         SecretKey key = new SecretKeySpec(fromHex(origKey), "AES");
         Cipher cipher = Cipher.getInstance(DEFAULT_CIPHER_ALGORITHM);
@@ -205,6 +206,6 @@ public class Secure {
         cipher.init(Cipher.DECRYPT_MODE, key);
         // 解密
         byte[] result = cipher.doFinal(fromHex(content));
-        return toHex(result);
+        return new String(result);
     }
 }

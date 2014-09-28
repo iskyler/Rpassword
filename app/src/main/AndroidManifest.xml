@@ -21,10 +21,12 @@
         <meta-data
             android:name="AA_DB_VERSION"
             android:value="5" />
+
         <provider
+            android:name="com.activeandroid.content.ContentProvider"
             android:authorities="com.skyler.rpassword"
-            android:exported="false"
-            android:name="com.activeandroid.content.ContentProvider" />
+            android:exported="false" />
+
         <activity
             android:name=".ui.LoginActivity"
             android:label="@string/app_name"
@@ -47,6 +49,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.skyler.rpassword.ui.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".ui.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:parentActivityName=".ui.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.skyler.rpassword.ui.MainActivity" />
         </activity>
     </application>
 

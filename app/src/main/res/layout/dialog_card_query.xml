@@ -27,6 +27,7 @@
         android:id="@+id/card_query_password"
         android:layout_width="match_parent"
         android:layout_height="50dip"
+        android:inputType="textPassword"
         android:background="#ffffcc"
         android:gravity="center"
         android:textColor="#666666"
